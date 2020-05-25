@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+#books {
+    border-radius: 0.25rem;
+    background: #2e2d2d !important;
+  }
+  section {
+    padding: 40px 0;
+  }
+
+
+  nav, .nav-link{
+    font-size: 28px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+    color: #000 !important;
+  }
+  .nav-item .nav-link{
+    color: white !important;
+  }
+
+  .nav-item{
+    margin: 0 10px;
+  }
+
+  #books .card {
+    border: none;
+    background: #fff;
+  }
+  .card_book {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 30px;
+  }
+  
+  .card_book .card {
+    min-height: 312px;
+  }
+  
+  p.card-text,
+  h4.card-title {
+    min-height: 96px !important;
+  }
+  
+  .card-title {
+    color: #007bff;
+    cursor: pointer;
+  }
+
+  p.badge{
+    font-size: 15px; 
+  }
+
+  body{
+    background: #222121;
+  }
+  table{
+    background: white;
+  }
+    
+  .card_book .card .card-body img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card-text{
+    text-align: justify !important;
+  }
+  
+  div.container-precio-idioma{
+    display: flex;
+    justify-content: space-between;
+  }

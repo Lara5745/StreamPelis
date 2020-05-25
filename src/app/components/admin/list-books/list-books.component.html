@@ -1,0 +1,49 @@
+<html lang="es">
+<section  class="row mt-5">
+    <div class="col">
+        <button *ngIf="isAdmin==true;" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalBook">Nueva Película</button>
+        <!--Admin:{{isAdmin}}-->
+        <table class="table table-hover">
+            <thead style="background-color: #007bff;">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Director</th>
+                    <th scope="col">Idioma</th>
+                    <th scope="col">Licencia</th>
+                    <th scope="col">Disponible</th>
+                    <th scope="col">&nbsp;</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books; index as i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{book.titulo}}</td>
+                    <td>{{book.director}}</td> <!--Director != autor-->
+                    <td>{{book.idioma}}</td>
+                    <td>${{book.precio}}</td>
+                    <td>{{book.oferta == '1' ? 'Si' : 'No'}}</td>
+                    <td *ngIf="book.userUid==userUid || isAdmin==true; else noOwner">
+                        <button data-toggle="modal" data-target="#modalBook" (click)="onPreUpdateBook(book)" class="btn btn-primary">Actualizar</button>
+                    </td>
+                    <ng-template #noOwner>
+                        <td>
+                            <button  class="btn btn-secondary" hidden>Actualizar</button>
+                        </td>
+                    </ng-template>
+                    <td *ngIf="isAdmin==true;else noAdmin">
+                        <button (click)="onDeleteBook(book.id)" class="btn btn-danger">Eliminar</button>
+                    </td>
+                    <ng-template #noAdmin>
+                        <td>
+                            <button (click)="onDeleteBook(book.id)" class="btn btn-secondary" hidden>Eliminar</button>
+                        </td>
+                    </ng-template>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<app-modal [userUid]="userUid"></app-modal>
+</html>
